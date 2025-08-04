@@ -6,7 +6,7 @@
 /*   By: efmacm23 <efmacm23@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 18:07:48 by efmacm23          #+#    #+#             */
-/*   Updated: 2025/08/04 23:20:18 by efmacm23         ###   ########.fr       */
+/*   Updated: 2025/08/05 03:16:17 by efmacm23         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,28 +44,28 @@ void	*_iter_cmp_str_with_chr(const char *str, unsigned char c, \
 // void	*_iter_cmp_str_with_chr(const unsigned char *str, unsigned char c, \
 // 	size_t n_cmp);
 
-void	*ft_memchr(const void *mem, int chr, size_t n)
+void	*ft_memchr(const void *mem, int chr, size_t num_bytes_to_look)
 {
 	return (_iter_cmp_str_with_chr((const char *)mem, \
-		(unsigned char)chr, n));
+		(unsigned char)chr, num_bytes_to_look));
 	// return (_iter_cmp_str_with_chr((const unsigned char *)mem, \
 	// 	(unsigned char)chr, n));
 }
 
 void	*_iter_cmp_str_with_chr(const char *str, unsigned char c, \
-	size_t n_cmp)
+	size_t num_bytes_to_look)
 // void	*_iter_cmp_str_with_chr(const unsigned char *str, unsigned char c, \
-// 	size_t n_cmp)
+// 	size_t num_bytes_to_look)
 {
 	// if (str == NULL)
 	// 	return (NULL);
-	while (n_cmp)
+	while (num_bytes_to_look)
 	{
 		// if ((const unsigned char)*str == c)
-		if (*str == c)
+		if ((unsigned char)*str == c)
 			return ((void *)str);
 		str++;
-		n_cmp--;
+		num_bytes_to_look--;
 	}
 	return (NULL);
 }

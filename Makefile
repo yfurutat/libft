@@ -22,6 +22,14 @@ _BSRCS_	:=	lstnew \
 			lstdelone lstclear \
 			lstiter lstmap \
 
+TESTERS	:=	\
+			libft-tester-tokyo \
+			libftTester \
+			42_libft_tester \
+			torchinette \
+			../libft-unit-test \
+#			libft-unit-test \
+
 ifdef ADD_BONUS
 _SRCS_	+=	$(_BSRCS_)
 endif
@@ -40,6 +48,7 @@ AR		:=	ar -rcs
 HFILE	:=	libft.h
 
 all		:	$(NAME)
+# 	mkdir -p obj
 
 $(NAME)	:	$(OBJS)
 	$(AR) $(NAME) $(OBJS)
@@ -57,7 +66,7 @@ sall	:
 sbonus	:
 	@make -s bonus
 aclean	:
-	@$(RM) $(OBJS) $(BOBJS) $(NAME) a.out
+	@$(RM) $(OBJS) $(BOBJS) $(NAME) a.out $(TESTERS)
 reb		:	fclean bonus
 resb	:
 	@make -s fclean bonus
@@ -85,9 +94,10 @@ testers	:
 	git clone https://github.com/usatie/libft-tester-tokyo.git
 	git clone https://github.com/gmarcha/42_libft_tester.git
 	git clone https://github.com/arnaudderison/libft-torchinette torchinette
+	git clone https://github.com/alelievr/libft-unit-test.git ../libft-unit-test
 
 .PHONY	:	all clean fclean re bonus \
-	aclean reb files filesb commit norm normd normf norma
+	aclean reb files filesb commit norm normd normf norma testers
 
 # .DEFAULT_GOAL := fclean
 

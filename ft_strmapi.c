@@ -6,7 +6,7 @@
 /*   By: efmacm23 <efmacm23@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 18:02:21 by efmacm23          #+#    #+#             */
-/*   Updated: 2025/08/04 18:02:31 by efmacm23         ###   ########.fr       */
+/*   Updated: 2025/08/05 04:50:44 by efmacm23         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,12 @@ char	*ft_strmapi(char const *str, char (*fnc)(unsigned int, char))
 	end = ft_strlen(str);
 	if (end > UINT_MAX)
 		end = UINT_MAX;
-	new_str = (char *)malloc(sizeof(char) * (end + 1));
+	new_str = safer_malloc_for_str(end + 1);
 	if (new_str != NULL)
 		_iter_apply_fnc_to_str(new_str, str, end, fnc);
 	return (new_str);
 }
+	// new_str = (char *)malloc(sizeof(char) * (end + 1));
 
 static size_t	_iter_apply_fnc_to_str(char *new_str, const char *str, \
 	size_t end, char (*fnc)(unsigned int, char))

@@ -6,7 +6,7 @@
 /*   By: efmacm23 <efmacm23@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 23:23:57 by efmacm23          #+#    #+#             */
-/*   Updated: 2025/08/05 01:27:25 by efmacm23         ###   ########.fr       */
+/*   Updated: 2025/08/05 04:50:02 by efmacm23         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*nu_str;
+	char	*new_str;
 	size_t	len_s1;
 	size_t	len_s2;
 
@@ -52,10 +52,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
-	nu_str = (char *)malloc(sizeof(char) * (len_s1 + len_s2 + 1));
-	if (!nu_str)
+	new_str = safer_malloc_for_str(len_s1 + len_s2 + 1);
+	if (!new_str)
 		return (NULL);
-	ft_strlcpy(nu_str, s1, len_s1 + 1);
-	ft_strlcat(nu_str, s2, len_s1 + len_s2 + 1);
-	return (nu_str);
+	ft_strlcpy(new_str, s1, len_s1 + 1);
+	ft_strlcat(new_str, s2, len_s1 + len_s2 + 1);
+	return (new_str);
 }
+	// nu_str = (char *)malloc(sizeof(char) * (len_s1 + len_s2 + 1));

@@ -6,7 +6,7 @@
 /*   By: efmacm23 <efmacm23@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 15:11:52 by efmacm23          #+#    #+#             */
-/*   Updated: 2025/08/04 23:29:15 by efmacm23         ###   ########.fr       */
+/*   Updated: 2025/08/05 04:33:22 by efmacm23         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,16 @@ static int	_convert_str_to_num(const char *str, int sign)
 {
 	unsigned long	num;
 	unsigned long	digit1;
-	bool			flow;
+	bool			overflow;
 
 	num = 0;
 	while (ft_isdigit(*str))
 	{
 		digit1 = (*str - '0');
-		flow = __isoverflow(sign, num, digit1);
-		if (flow == true && sign == POSITIVE)
+		overflow = __isoverflow(sign, num, digit1);
+		if (overflow == true && sign == POSITIVE)
 			return ((int)LONG_MAX);
-		else if (flow == true && sign == NEGATIVE)
+		else if (overflow == true && sign == NEGATIVE)
 			return ((int)LONG_MIN);
 		num = (num * 10) + digit1;
 		str += 1;

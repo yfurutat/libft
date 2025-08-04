@@ -6,7 +6,7 @@
 /*   By: efmacm23 <efmacm23@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 19:12:25 by efmacm23          #+#    #+#             */
-/*   Updated: 2025/08/05 01:21:02 by efmacm23         ###   ########.fr       */
+/*   Updated: 2025/08/05 03:07:23 by efmacm23         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 static int	_compare_strings_to_find_diff(const char *str1, \
 	const char *str2, size_t num_cmp);
 
+	// if (num_cmp == 0 || str1 == NULL || str2 == NULL)
 int	ft_strncmp(const char *str1, const char *str2, size_t num_cmp)
 {
 	int	diff;
 
-	if (num_cmp == 0 || str1 == NULL || str2 == NULL)
-	// if (num_cmp == 0)
+	if (num_cmp == 0)
 		return (0);
 	diff = _compare_strings_to_find_diff((const char *)str1, \
 		(const char *)str2, num_cmp);

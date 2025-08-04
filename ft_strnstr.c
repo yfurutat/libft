@@ -6,7 +6,7 @@
 /*   By: efmacm23 <efmacm23@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 23:25:06 by efmacm23          #+#    #+#             */
-/*   Updated: 2025/08/04 23:25:32 by efmacm23         ###   ########.fr       */
+/*   Updated: 2025/08/05 04:56:58 by efmacm23         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	i;
 	size_t	needle_len;
 
+	// if (needle == NULL)
+	// 	return (NULL);
 	needle_len = ft_strlen(needle);
+	// if (needle_len == 0 || len == 0)
 	if (needle_len == 0)
 		return ((char *)haystack);
 	if (len < needle_len)

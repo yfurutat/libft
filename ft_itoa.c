@@ -6,7 +6,7 @@
 /*   By: efmacm23 <efmacm23@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 03:35:29 by yuske             #+#    #+#             */
-/*   Updated: 2025/08/05 00:36:50 by efmacm23         ###   ########.fr       */
+/*   Updated: 2025/08/05 04:54:11 by efmacm23         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ char	*ft_itoa(int from_integer)
 	sign = _check_sign_of_num((long long)from_integer);
 	num_cast_to_ul = (unsigned long)((long)from_integer * (long)sign);
 	digits = _count_digits(num_cast_to_ul, sign);
-	to_ascii = (char *)ft_calloc((digits + 1), sizeof(char));
+	to_ascii = safer_malloc_for_str(digits + 1);
+	// to_ascii = (char *)ft_calloc((digits + 1), sizeof(char));
 	if (to_ascii != NULL)
 		_convert_int_to_ascii(num_cast_to_ul, to_ascii, digits, sign);
 	return (to_ascii);
@@ -83,14 +84,15 @@ static size_t	_count_digits(unsigned long num_cast_to_ul, int sign)
  * @param sign 
  */
 static void	_convert_int_to_ascii(unsigned long num, char *str, \
-	size_t digits, int sign)
+	size_t i, int sign)
 {
-	while (digits > 0)
+	str[i] = '\0';
+	while (i > 0)
 	{
-		digits -= 1;
-		str[digits] = num % 10 + '0';
+		i -= 1;
+		str[i] = num % 10 + '0';
 		num /= 10;
 	}
-	if (sign == NEGATIVE)
-		str[0] = '-';
+	if (sign == NEGATIVE && i == 0)
+		str[i] = '-';
 }
