@@ -6,7 +6,7 @@
 /*   By: efmacm23 <efmacm23@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 23:21:28 by efmacm23          #+#    #+#             */
-/*   Updated: 2025/08/05 01:13:11 by efmacm23         ###   ########.fr       */
+/*   Updated: 2025/08/06 05:11:23 by efmacm23         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static size_t	_iter_memcpy_rev(unsigned char *dest, \
 
 void	*ft_memmove(void *dest, const void *src, size_t num_cpy)
 {
+	// if (dest == src || num_cpy == 0)
 	if (dest == src || (src != NULL && num_cpy == 0))
 		return (dest);
 	else if (dest > src)
@@ -86,10 +87,24 @@ static size_t	_iter_memcpy(unsigned char *dest, \
 static size_t	_iter_memcpy_rev(unsigned char *dest, \
 	const unsigned char *src, size_t len)
 {
-	while (len > 0)
+	size_t	i;
+
+	i = len;
+	while (i > 0)
 	{
-		len -= 1;
-		dest[len] = src[len];
+		i -= 1;
+		dest[i] = src[i];
 	}
-	return (len);
+	return (i);
 }
+
+// static size_t	_iter_memcpy_rev(unsigned char *dest, \
+// 	const unsigned char *src, size_t len)
+// {
+// 	while (len > 0)
+// 	{
+// 		len -= 1;
+// 		dest[len] = src[len];
+// 	}
+// 	return (len);
+// }

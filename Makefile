@@ -42,16 +42,20 @@ BOBJS	:=	$(BSRCS:.c=.o)
 
 NAME	:=	libft.a
 CC		:=	gcc
-CFLAGS	:=	-Wall -Wextra -Werror -g
+CFLAGS	:=	-Wall -Wextra -Werror
+# DBFLAGS	:=	-g -fsanitize=thread -fsanitize=address
 RM		:=	rm -fr
 AR		:=	ar -rcs
 HFILE	:=	libft.h
 
-all		:	$(NAME)
-# 	mkdir -p obj
+resb	:
+	@$(MAKE) -s fclean bonus
 
 $(NAME)	:	$(OBJS)
 	$(AR) $(NAME) $(OBJS)
+
+all		:	$(NAME)
+# 	mkdir -p obj
 
 clean	:
 	$(RM) $(OBJS) $(BOBJS)
@@ -59,17 +63,17 @@ fclean	:	clean
 	$(RM) $(NAME)
 re		:	fclean all
 bonus	:
-	make all ADD_BONUS=42
+	$(MAKE) all ADD_BONUS=42
 
 sall	:
-	@make -s all
+	@$(MAKE) -s all
 sbonus	:
-	@make -s bonus
+	@$(MAKE) -s bonus
 aclean	:
-	@$(RM) $(OBJS) $(BOBJS) $(NAME) a.out $(TESTERS)
+	@$(MAKE) -s fclean 
+	@$(RM) a.out $(TESTERS)
+
 reb		:	fclean bonus
-resb	:
-	@make -s fclean bonus
 
 files	:
 	@touch $(SRCS) $(HFILE)
@@ -89,6 +93,16 @@ commit	:	aclean
 			git log --numstat | grep -cE '^[0-9]+[[:space:]]+[0-9]+[[:space:]]+'
 			git status
 
+test-u	:
+	$(MAKE) f -C ../libft-unit-test
+
+test-l	:
+	$(MAKE) -C libftTester
+
+test-t	:
+	$(MAKE) -C libft-tester-tokyo	
+	$(MAKE) bonus -C libft-tester-tokyo	
+
 testers	:
 	git clone https://github.com/Tripouille/libftTester.git
 	git clone https://github.com/usatie/libft-tester-tokyo.git
@@ -97,7 +111,7 @@ testers	:
 	git clone https://github.com/alelievr/libft-unit-test.git ../libft-unit-test
 
 .PHONY	:	all clean fclean re bonus \
-	aclean reb files filesb commit norm normd normf norma testers
+	aclean reb files filesb commit norm normd normf norma testers 
 
 # .DEFAULT_GOAL := fclean
 
@@ -106,7 +120,7 @@ testers	:
 # 			time $(AR) $(NAME) $(OBJS)
 # 			time $(RM) $(OBJS) $(BOBJS)
 # 			time $(RM) $(NAME)
-# 			@time make all ADD_BONUS=42
+# 			@time $(MAKE) all ADD_BONUS=42
 # 			@time norminette $(HFILE) $(SRCS) $(BSRCS)
 # 			@time norminette -R CheckDefine $(HFILE) $(SRCS) $(BSRCS)
 # 			@time norminette -R CheckForbiddenSourceHeader $(HFILE) $(SRCS) $(BSRCS)

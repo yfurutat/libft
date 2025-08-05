@@ -6,12 +6,20 @@
 /*   By: efmacm23 <efmacm23@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 18:34:27 by yuske             #+#    #+#             */
-/*   Updated: 2025/08/05 02:43:22 by efmacm23         ###   ########.fr       */
+/*   Updated: 2025/08/05 14:11:33 by efmacm23         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+# include <unistd.h> // write()
+# include <stdio.h> // NULL,
+# include <stdlib.h> // malloc(), free()
+# include <string.h> // size_t
+# include <limits.h> // LONG_MIN, LONG_MAX, SIZE_MAX
+# include <stdbool.h> // bool, true, false
+# include <errno.h>
 
 //atoi(), itoa(), putnbr_fd()
 // # define POSITIVE (1)
@@ -22,14 +30,6 @@ typedef enum e_sign
 	POSITIVE = 1,
 	NEGATIVE = -1
 }	t_sign;
-
-# include <unistd.h> // write()
-# include <stdio.h> // NULL,
-# include <stdlib.h> // malloc(), free()
-# include <string.h> // size_t
-# include <limits.h> // LONG_MIN, LONG_MAX, SIZE_MAX
-# include <stdbool.h> // true, false
-# include <errno.h>
 
 //1. ctype
 int		ft_isascii(int chr);

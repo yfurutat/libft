@@ -6,7 +6,7 @@
 /*   By: efmacm23 <efmacm23@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 15:11:52 by efmacm23          #+#    #+#             */
-/*   Updated: 2025/08/05 04:33:22 by efmacm23         ###   ########.fr       */
+/*   Updated: 2025/08/06 05:07:36 by efmacm23         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,3 +120,39 @@ static bool	__isoverflow(t_sign sign, unsigned long digits2p, \
 }
 // else if (sign == NEGATIVE \
 // 	&& (digits2p > (unsigned long)(-(LONG_MIN + digit1)) / 10))
+
+// void	test_atoi()
+// {
+// 	const char	arr[30];
+// 	int			num;
+// 	size_t		i;
+	
+// 	const char	*strs[] = {
+// 		"18446744073709551615", "12345", 
+// 		" +0123", " +-00123", " -000123",
+// 		"2147483647", "2147483648", 
+// 		"-2147483648", "-2147483649", 
+// 		NULL
+// 	};
+// 	i = 0;
+// 	while (strs[i] != NULL)
+// 	{
+// 		printf("\n%zu. input = \"%s\"\n", i + 1, strs[i]);
+// 		printf("    atoi = %d\n ft_atoi = %d\n", atoi(strs[i]), ft_atoi(strs[i]));
+// 		i++;
+// 	}
+// 	printf("\n");
+// 	printf("%d\n", (int)LONG_MAX);
+// 	printf("%d\n", (int)LONG_MIN);
+// 	printf("%d\n", INT_MAX);
+// 	printf("%d\n", INT_MIN);
+// 	printf("%d\n", INT_MAX + 1);
+// 	printf("%d\n", INT_MIN - 1);
+// 	printf("\n");
+// }
+
+// int	main()
+// {
+// 	test_atoi();
+// 	return (0);
+// }
